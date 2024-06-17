@@ -1,0 +1,4 @@
+export const MIN_VEHICLE_PRICE = 1;
+export const MAX_VEHICLE_PRICE = 999999999;
+export const MAX_VEHICLE_PRICE_LENGTH = 9;
+export const DEBOUNCE_DELAY_IN_MILLIS = 900;
