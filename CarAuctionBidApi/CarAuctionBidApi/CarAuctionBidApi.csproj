@@ -13,4 +13,22 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Domain\" />
+    <None Remove="Dto\" />
+    <None Remove="Domain\BidCalculation\" />
+    <None Remove="Dto\BidCalculationDto\" />
+    <None Remove="Domain\Vehicle\" />
+    <None Remove="Dto\VehicleTypeDto\" />
+    <None Remove="Controllers\Bid\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Domain\BidCalculation\" />
+    <Folder Include="Dto\BidCalculationDto\" />
+    <Folder Include="Domain\Vehicle\" />
+    <Folder Include="Dto\VehicleTypeDto\" />
+    <Folder Include="Controllers\Bid\" />
+  </ItemGroup>
 </Project>
