@@ -1,4 +1,4 @@
-export interface VueInputEvent extends InputEvent {
+export interface VueInputEvent extends Event {
     target: VueInputTarget;
 }
 

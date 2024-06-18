@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType, Ref, ref } from 'vue'
+import { PropType } from 'vue'
 import { CurrencyFormatter } from '../../../../shared/formatters/currency.formatter';
 import { BidCalculation } from "../../../../models/bid-calculation/bid-calculation.interface"
 

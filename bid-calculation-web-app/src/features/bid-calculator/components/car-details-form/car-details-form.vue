@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref, defineEmits } from 'vue'
+import { Ref, ref } from 'vue'
 import { VueInputEvent } from "../../../../shared/types/vue-input-event.interface"
 import { PriceValidator } from '../../../../shared/validators/price.validator'
 import { Debouncer } from '../../../../shared/utils/debouncer.util'

@@ -3,8 +3,7 @@ import { ref } from 'vue'
 import CarDetailsForm from "./components/car-details-form/car-details-form.vue";
 import BidCalculationTable from "./components/bid-calculation-table/bid-calculation-table.vue";
 import { BidCalculationFactory } from "../../models/bid-calculation/bid-calculation.factory"
-
-const count = ref(0);
+import { VehicleType } from '../../models/vehicle/vehicle-type.enum';
 
 const bidCalculation = ref(BidCalculationFactory.createDefault());
 
