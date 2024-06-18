@@ -2,15 +2,27 @@
 import { ref } from 'vue'
 import CarDetailsForm from "./components/car-details-form/car-details-form.vue";
 import BidCalculationTable from "./components/bid-calculation-table/bid-calculation-table.vue";
+import FailedBidCalculationErrorBanner from "./components/failed-bid-calculation-error-banner/failed-bid-calculation-error-banner.vue";
 import { BidCalculationFactory } from "../../models/bid-calculation/bid-calculation.factory"
 import { VehicleType } from '../../models/vehicle/vehicle-type.enum';
+import { CarAuctionBidApiService } from "../../api/car-auction-bid-api/services/car-auction-bid-api.service"
 
 const bidCalculation = ref(BidCalculationFactory.createDefault());
+const showFailedBidCalculationError = ref(false);
 
-function fetchBidCalculation(vehiclePrice: string, vehicleType: VehicleType) {
-    bidCalculation.value.vehiclePrice = Number(vehiclePrice);
-    bidCalculation.value.vehicleType = vehicleType;
+async function fetchBidCalculation(vehiclePrice: string, vehicleType: VehicleType) {
+    showFailedBidCalculationError.value = false;
+    const newBid = await CarAuctionBidApiService.calculateBid(vehiclePrice, vehicleType);
+    if (newBid) {
+      bidCalculation.value = newBid;
+    } else {
+      showFailedBidCalculationError.value = true;
+      bidCalculation.value = BidCalculationFactory.createDefault();
+    }
+}
 
+function hideFailedBidCalculatorErrorMessage() {
+  showFailedBidCalculationError.value = false;
 }
 
 </script>
@@ -21,15 +33,12 @@ function fetchBidCalculation(vehiclePrice: string, vehicleType: VehicleType) {
   <div class="card">
     <CarDetailsForm @calculateBid="fetchBidCalculation"/>
   </div>
+  <FailedBidCalculationErrorBanner :show-banner="showFailedBidCalculationError" @hide="hideFailedBidCalculatorErrorMessage"/>
   <div class="card">
     <BidCalculationTable :bidCalculation="bidCalculation"/>
-  </div>
-
-  
+  </div>  
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
-}
+
 </style>

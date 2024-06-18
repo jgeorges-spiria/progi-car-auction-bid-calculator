@@ -15,17 +15,5 @@ export class BidCalculationFactory {
         }
     }
 
-    public static create(data: any): BidCalculation {
-        return {
-            vehiclePrice: data.vehiclePrice,
-            vehicleType: data.vehicleType,
-            basicFee: data.basicFee,
-            specialFee: data.specialFee,
-            associationFee: data.associationFee,
-            storageFee: data.storageFee,
-            total: data.total,
-        }
-    }
-
 }
 

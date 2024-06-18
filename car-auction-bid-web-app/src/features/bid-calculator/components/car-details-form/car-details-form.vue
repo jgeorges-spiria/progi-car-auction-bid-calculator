@@ -25,6 +25,7 @@ const showVehiclePriceError: Ref<boolean> = ref(false);
 function handleVehiclePriceChange(input: VueInputEvent): void {
     if (input.target.value === "") {
         showVehiclePriceError.value = false;
+        return;
     } else {
         showVehiclePriceError.value = !PriceValidator.isValid(input.target.value, MIN_VEHICLE_PRICE, MAX_VEHICLE_PRICE);    
     }
@@ -33,11 +34,9 @@ function handleVehiclePriceChange(input: VueInputEvent): void {
 }
 
 function calculateBid() {
-    if (!showVehiclePriceError.value) {
-        console.log("DEBOUNCE STARTED");
+    if (!showVehiclePriceError.value && vehiclePrice.value !== "") {
         debouncer.debounce(() => {
             emit('calculateBid', vehiclePrice.value, vehicleType.value);
-            console.log("DEBOUNCE DONE");
         }, DEBOUNCE_DELAY_IN_MILLIS);
     }
 }
@@ -46,28 +45,62 @@ function calculateBid() {
 </script>
 
 <template>
-    <form @submit.prevent>
-        <label name="vehicle-price">Vehicle Price</label>
-        <input 
-            v-model.trim="vehiclePrice" 
-            @input="handleVehiclePriceChange" 
-            name="vehicle-price" 
-            :maxLength=MAX_VEHICLE_PRICE_LENGTH 
-            type="text" 
-            placeholder="1 - 999,999,999"
-            :class="{ inputError: showVehiclePriceError }">
-        <p v-show="showVehiclePriceError">Invalid Vehicle Price</p>
-        <br/>
-        <label name="vehicle-type">Vehicle Type</label>
-        <select v-model="vehicleType" @input="calculateBid">
-            <option v-for="option in vehicleTypeOptions" :value="option.value">
-                {{ option.value }}
-            </option>
-        </select>
+    <form class="form" @submit.prevent>
+        <div class="formInput">
+            <label name="vehicle-price">Vehicle Price</label>
+            <input
+                class="vehiclePriceInput"
+                v-model.trim="vehiclePrice" 
+                @input="handleVehiclePriceChange" 
+                name="vehicle-price" 
+                :maxLength=MAX_VEHICLE_PRICE_LENGTH 
+                type="text" 
+                placeholder="1 - 999,999,999"
+                :class="{ inputError: showVehiclePriceError }">
+        </div>
+        <div class="formInput">
+            <label name="vehicle-type">Vehicle Type</label>
+            <select class="vehicleTypeInput" v-model="vehicleType" @input="calculateBid">
+                <option v-for="option in vehicleTypeOptions" :value="option.value">
+                    {{ option.value }}
+                </option>
+            </select>
+        </div>
     </form>
+    <span v-show="showVehiclePriceError">Invalid Vehicle Price. Numbers only please.</span>
 </template>
 
 <style scoped>
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-right: 2em;
+    margin-bottom: 3em;
+}
+
+.vehiclePriceInput {
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    margin-top: 0.5em;
+    padding: 0.6em 0.6em;
+    font-size: 1em;
+}
+.vehicleTypeInput {
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    margin-top: 0.5em;
+    padding: 0.6em 2em;
+    font-size: 1em;
+}
 .inputError {
     border-color: red;
 }
