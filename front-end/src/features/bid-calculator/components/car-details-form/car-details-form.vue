@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue'
+import { Ref, ref, defineEmits } from 'vue'
 import { VueInputEvent } from "../../../../shared/types/vue-input-event.interface"
 import { PriceValidator } from '../../../../shared/validators/price.validator'
 import { Debouncer } from '../../../../shared/utils/debouncer.util'
-import { CurrencyFormatter } from '../../../../shared/formatters/currency.formatter';
-import { VehicleType } from '../../types/vehicle-type.enum';
+import { VehicleType } from "../../../../models/vehicle/vehicle-type.enum"
 import { DEBOUNCE_DELAY_IN_MILLIS, MAX_VEHICLE_PRICE, MIN_VEHICLE_PRICE, MAX_VEHICLE_PRICE_LENGTH } from './types/car-details-form.constants';
+
+const emit = defineEmits<{
+    (e: 'calculateBid', vehiclePrice: string, vehicleType: VehicleType): void
+}>();
+
 
 
 const debouncer = new Debouncer();
@@ -15,29 +19,27 @@ const vehicleTypeOptions = ref([
   { value: VehicleType.Common },
   { value: VehicleType.Luxury },
 ])
-const formattedVehiclePrice: Ref<string> = ref("");
 
 const showVehiclePriceError: Ref<boolean> = ref(false);
 
 function handleVehiclePriceChange(input: VueInputEvent): void {
-    console.log("DEBOUNCE STARTED");
-    debouncer.debounce(() => {
-        console.log("DEBOUNCE DONE");
-    }, DEBOUNCE_DELAY_IN_MILLIS);
-
     if (input.target.value === "") {
         showVehiclePriceError.value = false;
     } else {
         showVehiclePriceError.value = !PriceValidator.isValid(input.target.value, MIN_VEHICLE_PRICE, MAX_VEHICLE_PRICE);    
     }
+
+    calculateBid();
 }
 
-function handleVehicleTypeSelection(input: VueInputEvent): void {
-    console.log("DEBOUNCE STARTED");
-    debouncer.debounce(() => {
-        console.log("DEBOUNCE DONE");
-    }, DEBOUNCE_DELAY_IN_MILLIS);
-
+function calculateBid() {
+    if (!showVehiclePriceError.value) {
+        console.log("DEBOUNCE STARTED");
+        debouncer.debounce(() => {
+            emit('calculateBid', vehiclePrice.value, vehicleType.value);
+            console.log("DEBOUNCE DONE");
+        }, DEBOUNCE_DELAY_IN_MILLIS);
+    }
 }
 
 
@@ -57,7 +59,7 @@ function handleVehicleTypeSelection(input: VueInputEvent): void {
         <p v-show="showVehiclePriceError">Invalid Vehicle Price</p>
         <br/>
         <label name="vehicle-type">Vehicle Type</label>
-        <select v-model="vehicleType">
+        <select v-model="vehicleType" @input="calculateBid">
             <option v-for="option in vehicleTypeOptions" :value="option.value">
                 {{ option.value }}
             </option>
