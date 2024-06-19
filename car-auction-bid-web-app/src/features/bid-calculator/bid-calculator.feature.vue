@@ -12,6 +12,12 @@ const showFailedBidCalculationError = ref(false);
 
 async function fetchBidCalculation(vehiclePrice: string, vehicleType: VehicleType) {
     showFailedBidCalculationError.value = false;
+    if (vehiclePrice.length === 0) {
+      bidCalculation.value = BidCalculationFactory.createDefault();
+      return;
+    }
+
+
     const newBid = await CarAuctionBidApiService.calculateBid(vehiclePrice, vehicleType);
     if (newBid) {
       bidCalculation.value = newBid;

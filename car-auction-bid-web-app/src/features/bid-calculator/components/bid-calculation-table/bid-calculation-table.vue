@@ -4,6 +4,7 @@ import { BidCalculation } from "../../../../models/bid-calculation/bid-calculati
 import BidCalculationTableDesktop from "./components/bid-calculation-table-desktop.vue"
 import BidCalculationTableMobile from "./components/bid-calculation-table-mobile.vue"
 import IsMobile from "../../../../shared/components/is-mobile.vue"
+import { Color } from "../../../../shared/styles/color.enum"
 
 const props = defineProps({
     'bidCalculation': { type: Object as PropType<BidCalculation>, required: true }
@@ -32,12 +33,12 @@ function handleIsMobile(isMobileFlag: boolean) {
 }
 .bidCalculationTableHeaderItem {
     padding: 0.5em 1em;
-    border: 1px solid #eeeeee;
+    border: 1px solid v-bind(Color.OffWhite);
 }
 .bidCalculationTableRow {
 }
 .bidCalculationTableRowItem {
     padding: 0.5em 1em;
-    border: 1px solid #eeeeee
+    border: 1px solid v-bind(Color.OffWhite);
 }
 </style>

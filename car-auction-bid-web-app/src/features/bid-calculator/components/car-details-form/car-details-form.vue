@@ -5,6 +5,7 @@ import { PriceValidator } from '../../../../shared/validators/price.validator'
 import { Debouncer } from '../../../../shared/utils/debouncer.util'
 import { VehicleType } from "../../../../models/vehicle/vehicle-type.enum"
 import { DEBOUNCE_DELAY_IN_MILLIS, MAX_VEHICLE_PRICE, MIN_VEHICLE_PRICE, MAX_VEHICLE_PRICE_LENGTH } from './types/car-details-form.constants';
+import { Color } from "../../../../shared/styles/color.enum"
 
 const emit = defineEmits<{
     (e: 'calculateBid', vehiclePrice: string, vehicleType: VehicleType): void
@@ -34,7 +35,7 @@ function handleVehiclePriceChange(input: VueInputEvent): void {
 }
 
 function calculateBid() {
-    if (!showVehiclePriceError.value && vehiclePrice.value !== "") {
+    if (!showVehiclePriceError.value) {
         debouncer.debounce(() => {
             emit('calculateBid', vehiclePrice.value, vehicleType.value);
         }, DEBOUNCE_DELAY_IN_MILLIS);
@@ -89,19 +90,19 @@ function calculateBid() {
 
 .vehiclePriceInput {
     border-radius: 8px;
-    border: 1px solid #e2e2e2;
+    border: 1px solid v-bind(Color.GreyWhite);
     margin-top: 0.5em;
     padding: 0.6em 0.6em;
     font-size: 1em;
 }
 .vehicleTypeInput {
     border-radius: 8px;
-    border: 1px solid #e2e2e2;
+    border: 1px solid v-bind(Color.GreyWhite);
     margin-top: 0.5em;
     padding: 0.6em 2em;
     font-size: 1em;
 }
 .inputError {
-    border-color: red;
+    border-color: v-bind(Color.Red);
 }
 </style>

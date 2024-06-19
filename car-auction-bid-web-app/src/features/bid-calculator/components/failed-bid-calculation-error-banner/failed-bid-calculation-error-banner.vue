@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Color } from "../../../../shared/styles/color.enum"
 
 const props = defineProps({
     'showBanner': { type: Boolean, required: true }
@@ -24,8 +25,8 @@ function hideBanner() {
 
 <style scoped>
 .banner {
-    background-color: #ff9595;
-    color: #720000;
+    background-color: v-bind(Color.Salmon);
+    color: v-bind(Color.BrickRed);
     border-radius: 8px;
     padding: 1em 1.2em;
     font-weight: 500;
@@ -38,14 +39,14 @@ function hideBanner() {
     padding: 0.6em 2em;
     font-size: 0.8em;
     font-weight: 500;
-    color: #ffffff;
+    color: v-bind(Color.White);
     font-family: inherit;
-    background-color: #986161;
+    background-color: v-bind(Color.DarkSalmon);
     cursor: pointer;
     transition: border-color 0.25s;
 }
 .errorButton:hover {
-  border-color: #720000;
+  border-color: v-bind(Color.BrickRed);
   border-width: 1px;
 }
 .errorButton:focus,
