@@ -7,14 +7,18 @@
     "format": "npx prettier --write .",
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "npx jest",
+    "test:watch": "npx jest --watch"
   },
   "dependencies": {
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "@vitejs/plugin-vue": "^5.0.4",
     "prettier": "3.3.2",
+    "ts-jest": "^29.1.5",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vue-tsc": "^2.0.6"

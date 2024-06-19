@@ -1,7 +1,7 @@
 export class PriceValidator {
   public static isValid(
     input: string,
-    min: number = Number.NEGATIVE_INFINITY,
+    min: number = 0,
     max: number = Number.POSITIVE_INFINITY,
   ): boolean {
     const num = Number(input);

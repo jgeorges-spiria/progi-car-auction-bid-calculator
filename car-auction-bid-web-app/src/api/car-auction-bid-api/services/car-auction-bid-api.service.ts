@@ -1,6 +1,7 @@
 import { BidCalculation } from "../../../models/bid-calculation/bid-calculation.interface";
 import { VehicleType } from "../../../models/vehicle/vehicle-type.enum";
 import { HttpService } from "../../http.service";
+import { BidCalculationResponseDto } from "../dto/bid-calculation-response.dto";
 import { CarAuctionBidApiDtoMapper } from "../dto/car-auction-bid-api-dto-mapper";
 
 export class CarAuctionBidApiService {
@@ -18,7 +19,9 @@ export class CarAuctionBidApiService {
       });
       const response = await result.json();
       if (result.ok) {
-        return CarAuctionBidApiDtoMapper.mapDtoToBidCalculation(response);
+        return CarAuctionBidApiDtoMapper.mapToBidCalculation(
+          response as BidCalculationResponseDto,
+        );
       }
       return null;
     } catch (err) {
