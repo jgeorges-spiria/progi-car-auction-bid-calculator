@@ -9,4 +9,3 @@ namespace CarAuctionBidApi.Domain.Vehicle
 		Luxury
 	}
 }
-

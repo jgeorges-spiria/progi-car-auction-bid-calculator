@@ -5,13 +5,13 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
 {
 	public class BidCalculationResponseDto
 	{
-        public double vehiclePrice { get; set; }
-        public string vehicleType { get; set; }
-        public double basicFee { get; set; }
-        public double specialFee { get; set; }
-        public double associationFee { get; set; }
-        public double storageFee { get; set; }
-        public double total { get; set; }
+        public double vehiclePrice { get; }
+        public string vehicleType { get; }
+        public double basicFee { get; }
+        public double specialFee { get; }
+        public double associationFee { get; }
+        public double storageFee { get; }
+        public double total { get; }
 
         public static BidCalculationResponseDto create(BidCalculation bidCalculation)
 		{

@@ -4,40 +4,41 @@ namespace CarAuctionBidApi.Domain.BidCalculation
 {
 	public class BidCalculation
 	{
-        public double vehiclePrice;
-        public VehicleType vehicleType;
-        private BidCalculationFeeParameters bidCalculationFeeParameters;
+        public double vehiclePrice { get; }
+        public VehicleType vehicleType { get; }
+
         
         public BidCalculation(double vehiclePrice, VehicleType vehicleType) {
             this.vehiclePrice = vehiclePrice;
             this.vehicleType = vehicleType;
-            this.bidCalculationFeeParameters = new BidCalculationFeeParameters();
         }
 
         public double getBasicFee()
         {
+            double calculatedFee = this.vehiclePrice * BidCalculationFeeParameters.BASIC_FEE_PERCENT;
+
             if (this.vehicleType == VehicleType.Luxury)
             {
-                return this.getApplicableFee(
-                    this.bidCalculationFeeParameters.BASIC_LUXURY_MIN_FEE,
-                    this.bidCalculationFeeParameters.BASIC_LUXURY_MAX_FEE,
-                    this.vehiclePrice * this.bidCalculationFeeParameters.BASIC_FEE_PERCENT);
+                return this.pickApplicableFee(
+                    BidCalculationFeeParameters.BASIC_LUXURY_MIN_FEE,
+                    BidCalculationFeeParameters.BASIC_LUXURY_MAX_FEE,
+                    calculatedFee);
             }
 
-            return this.getApplicableFee(
-                    this.bidCalculationFeeParameters.BASIC_COMMON_MIN_FEE,
-                    this.bidCalculationFeeParameters.BASIC_COMMON_MAX_FEE,
-                    this.vehiclePrice * this.bidCalculationFeeParameters.BASIC_FEE_PERCENT);
+            return this.pickApplicableFee(
+                    BidCalculationFeeParameters.BASIC_COMMON_MIN_FEE,
+                    BidCalculationFeeParameters.BASIC_COMMON_MAX_FEE,
+                    calculatedFee);
         }
 
         public double getSpecialFee()
         {
             if (this.vehicleType == VehicleType.Luxury)
             {
-                return this.vehiclePrice * this.bidCalculationFeeParameters.SPECIAL_LUXURY_FEE_PERCENT;
+                return this.vehiclePrice * BidCalculationFeeParameters.SPECIAL_LUXURY_FEE_PERCENT;
             }
 
-            return this.vehiclePrice * this.bidCalculationFeeParameters.SPECIAL_COMMON_FEE_PERCENT;
+            return this.vehiclePrice * BidCalculationFeeParameters.SPECIAL_COMMON_FEE_PERCENT;
         }
 
         public double getAssociationFee()
@@ -60,7 +61,7 @@ namespace CarAuctionBidApi.Domain.BidCalculation
 
         public double getStorageFee()
         {
-            return this.bidCalculationFeeParameters.STORAGE_FEE_AMOUNT;
+            return BidCalculationFeeParameters.STORAGE_FEE_AMOUNT;
         }
 
         public double getTotal()
@@ -72,7 +73,7 @@ namespace CarAuctionBidApi.Domain.BidCalculation
                 this.getStorageFee();
         }
 
-        private double getApplicableFee(double minFee, double maxFee, double calculatedFee)
+        private double pickApplicableFee(double minFee, double maxFee, double calculatedFee)
         {
             if (calculatedFee < minFee)
             {

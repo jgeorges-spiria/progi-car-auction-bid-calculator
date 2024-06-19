@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Domain\" />
+    <None Remove="Domain\BidCalculationTest\" />
+    <None Remove="Dto\" />
+    <None Remove="Dto\BidCalculationDtoTest\" />
+    <None Remove="Dto\VehicleTypeDtoTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
+    <Folder Include="Domain\BidCalculationTest\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Dto\BidCalculationDtoTest\" />
+    <Folder Include="Dto\VehicleTypeDtoTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarAuctionBidApi\CarAuctionBidApi.csproj" />
+  </ItemGroup>
+</Project>
