@@ -14,8 +14,8 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 500;
             VehicleType vehicleType = VehicleType.Common;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.vehiclePrice, vehiclePrice);
-            Assert.AreEqual(bidCalculation.vehicleType, vehicleType);
+            Assert.AreEqual(bidCalculation.VehiclePrice, vehiclePrice);
+            Assert.AreEqual(bidCalculation.VehicleType, vehicleType);
         }
 
         [TestMethod]
@@ -24,11 +24,11 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 398;
             VehicleType vehicleType = VehicleType.Common;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.getBasicFee(), 39.8, this.assertDelta);
-            Assert.AreEqual(bidCalculation.getSpecialFee(), 7.96, this.assertDelta);
-            Assert.AreEqual(bidCalculation.getAssociationFee(), 5);
-            Assert.AreEqual(bidCalculation.getStorageFee(), 100);
-            Assert.AreEqual(bidCalculation.getTotal(), 550.76, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetBasicFee(), 39.8, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetSpecialFee(), 7.96, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetAssociationFee(), 5);
+            Assert.AreEqual(bidCalculation.GetStorageFee(), 100);
+            Assert.AreEqual(bidCalculation.GetTotal(), 550.76, this.assertDelta);
         }
 
         [TestMethod]
@@ -37,11 +37,11 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 501;
             VehicleType vehicleType = VehicleType.Common;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.getBasicFee(), 50);
-            Assert.AreEqual(bidCalculation.getSpecialFee(), 10.02, this.assertDelta);
-            Assert.AreEqual(bidCalculation.getAssociationFee(), 10);
-            Assert.AreEqual(bidCalculation.getStorageFee(), 100);
-            Assert.AreEqual(bidCalculation.getTotal(), 671.02, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetBasicFee(), 50);
+            Assert.AreEqual(bidCalculation.GetSpecialFee(), 10.02, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetAssociationFee(), 10);
+            Assert.AreEqual(bidCalculation.GetStorageFee(), 100);
+            Assert.AreEqual(bidCalculation.GetTotal(), 671.02, this.assertDelta);
         }
 
         [TestMethod]
@@ -50,11 +50,11 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 57;
             VehicleType vehicleType = VehicleType.Common;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.getBasicFee(), 10);
-            Assert.AreEqual(bidCalculation.getSpecialFee(), 1.14, this.assertDelta);
-            Assert.AreEqual(bidCalculation.getAssociationFee(), 5);
-            Assert.AreEqual(bidCalculation.getStorageFee(), 100);
-            Assert.AreEqual(bidCalculation.getTotal(), 173.14, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetBasicFee(), 10);
+            Assert.AreEqual(bidCalculation.GetSpecialFee(), 1.14, this.assertDelta);
+            Assert.AreEqual(bidCalculation.GetAssociationFee(), 5);
+            Assert.AreEqual(bidCalculation.GetStorageFee(), 100);
+            Assert.AreEqual(bidCalculation.GetTotal(), 173.14, this.assertDelta);
         }
 
         [TestMethod]
@@ -63,11 +63,11 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 1800;
             VehicleType vehicleType = VehicleType.Luxury;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.getBasicFee(), 180);
-            Assert.AreEqual(bidCalculation.getSpecialFee(), 72);
-            Assert.AreEqual(bidCalculation.getAssociationFee(), 15);
-            Assert.AreEqual(bidCalculation.getStorageFee(), 100);
-            Assert.AreEqual(bidCalculation.getTotal(), 2167);
+            Assert.AreEqual(bidCalculation.GetBasicFee(), 180);
+            Assert.AreEqual(bidCalculation.GetSpecialFee(), 72);
+            Assert.AreEqual(bidCalculation.GetAssociationFee(), 15);
+            Assert.AreEqual(bidCalculation.GetStorageFee(), 100);
+            Assert.AreEqual(bidCalculation.GetTotal(), 2167);
         }
 
         [TestMethod]
@@ -76,11 +76,11 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 1100;
             VehicleType vehicleType = VehicleType.Common;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.getBasicFee(), 50);
-            Assert.AreEqual(bidCalculation.getSpecialFee(), 22);
-            Assert.AreEqual(bidCalculation.getAssociationFee(), 15);
-            Assert.AreEqual(bidCalculation.getStorageFee(), 100);
-            Assert.AreEqual(bidCalculation.getTotal(), 1287);
+            Assert.AreEqual(bidCalculation.GetBasicFee(), 50);
+            Assert.AreEqual(bidCalculation.GetSpecialFee(), 22);
+            Assert.AreEqual(bidCalculation.GetAssociationFee(), 15);
+            Assert.AreEqual(bidCalculation.GetStorageFee(), 100);
+            Assert.AreEqual(bidCalculation.GetTotal(), 1287);
         }
 
         [TestMethod]
@@ -89,11 +89,11 @@ namespace Tests.Domain.BidCalculationTest
             double vehiclePrice = 1000000;
             VehicleType vehicleType = VehicleType.Luxury;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);
-            Assert.AreEqual(bidCalculation.getBasicFee(), 200);
-            Assert.AreEqual(bidCalculation.getSpecialFee(), 40000);
-            Assert.AreEqual(bidCalculation.getAssociationFee(), 20);
-            Assert.AreEqual(bidCalculation.getStorageFee(), 100);
-            Assert.AreEqual(bidCalculation.getTotal(), 1040320);
+            Assert.AreEqual(bidCalculation.GetBasicFee(), 200);
+            Assert.AreEqual(bidCalculation.GetSpecialFee(), 40000);
+            Assert.AreEqual(bidCalculation.GetAssociationFee(), 20);
+            Assert.AreEqual(bidCalculation.GetStorageFee(), 100);
+            Assert.AreEqual(bidCalculation.GetTotal(), 1040320);
         }
     }
 }

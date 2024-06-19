@@ -7,20 +7,20 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
 	public class BidCalculationRequestDto
 	{
         [Required, Range(1, 999999999)]
-        public double vehiclePrice { get; set; }
+        public double VehiclePrice { get; set; }
 
         [Required, EnumDataType(typeof(VehicleType))]
-        public VehicleType vehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
 
         public BidCalculationRequestDto(double vehiclePrice, VehicleType vehicleType)
 		{
-			this.vehiclePrice = vehiclePrice;
-			this.vehicleType = vehicleType;
+			this.VehiclePrice = vehiclePrice;
+			this.VehicleType = vehicleType;
 		}
 
-		public BidCalculation toBidCalculation()
+		public BidCalculation ToBidCalculation()
 		{
-			return new BidCalculation(this.vehiclePrice, this.vehicleType);
+			return new BidCalculation(this.VehiclePrice, this.VehicleType);
 		}
 	}
 }

@@ -5,35 +5,35 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
 {
 	public class BidCalculationResponseDto
 	{
-        public double vehiclePrice { get; }
-        public string vehicleType { get; }
-        public double basicFee { get; }
-        public double specialFee { get; }
-        public double associationFee { get; }
-        public double storageFee { get; }
-        public double total { get; }
+        public double VehiclePrice { get; }
+        public string VehicleType { get; }
+        public double BasicFee { get; }
+        public double SpecialFee { get; }
+        public double AssociationFee { get; }
+        public double StorageFee { get; }
+        public double Total { get; }
 
-        public static BidCalculationResponseDto create(BidCalculation bidCalculation)
+        public static BidCalculationResponseDto Create(BidCalculation bidCalculation)
 		{
             return new BidCalculationResponseDto(
-                bidCalculation.vehiclePrice,
-                VehicleTypeDtoMapper.toString(bidCalculation.vehicleType),
-                bidCalculation.getBasicFee(),
-                bidCalculation.getSpecialFee(),
-                bidCalculation.getAssociationFee(),
-                bidCalculation.getStorageFee(),
-                bidCalculation.getTotal()
+                bidCalculation.VehiclePrice,
+                VehicleTypeDtoMapper.ToString(bidCalculation.VehicleType),
+                bidCalculation.GetBasicFee(),
+                bidCalculation.GetSpecialFee(),
+                bidCalculation.GetAssociationFee(),
+                bidCalculation.GetStorageFee(),
+                bidCalculation.GetTotal()
                 );
         }
 
         public BidCalculationResponseDto(double vehiclePrice, string vehicleType, double basicFee, double specialFee, double associationFee, double storageFee, double total) {
-            this.vehiclePrice = vehiclePrice;
-            this.vehicleType = vehicleType;
-            this.basicFee = basicFee;
-            this.specialFee = specialFee;
-            this.associationFee = associationFee;
-            this.storageFee = storageFee;
-            this.total = total;
+            this.VehiclePrice = vehiclePrice;
+            this.VehicleType = vehicleType;
+            this.BasicFee = basicFee;
+            this.SpecialFee = specialFee;
+            this.AssociationFee = associationFee;
+            this.StorageFee = storageFee;
+            this.Total = total;
         }
 
     }

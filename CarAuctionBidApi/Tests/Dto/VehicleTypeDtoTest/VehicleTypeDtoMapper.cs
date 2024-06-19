@@ -9,13 +9,13 @@ namespace Tests.Dto.VehicleTypeDtoTest
         [TestMethod]
         public void ShouldConvertLuxuryVehicleTypeToLuxuryString()
 		{
-            Assert.AreEqual(VehicleTypeDtoMapper.toString(VehicleType.Luxury), "luxury");
+            Assert.AreEqual(VehicleTypeDtoMapper.ToString(VehicleType.Luxury), "luxury");
 		}
 
         [TestMethod]
         public void ShouldConvertCommonVehicleTypeToCommonString()
         {
-            Assert.AreEqual(VehicleTypeDtoMapper.toString(VehicleType.Common), "common");
+            Assert.AreEqual(VehicleTypeDtoMapper.ToString(VehicleType.Common), "common");
         }
     }
 }

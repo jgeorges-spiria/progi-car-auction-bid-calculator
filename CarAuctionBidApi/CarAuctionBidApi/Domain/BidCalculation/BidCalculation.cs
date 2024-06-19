@@ -4,52 +4,55 @@ namespace CarAuctionBidApi.Domain.BidCalculation
 {
 	public class BidCalculation
 	{
-        public double vehiclePrice { get; }
-        public VehicleType vehicleType { get; }
+        public double VehiclePrice { get; }
+        public VehicleType VehicleType { get; }
 
         
         public BidCalculation(double vehiclePrice, VehicleType vehicleType) {
-            this.vehiclePrice = vehiclePrice;
-            this.vehicleType = vehicleType;
+            this.VehiclePrice = vehiclePrice;
+            this.VehicleType = vehicleType;
         }
 
-        public double getBasicFee()
+        public double GetBasicFee()
         {
-            double calculatedFee = this.vehiclePrice * BidCalculationFeeParameters.BASIC_FEE_PERCENT;
+            double calculatedFee = this.VehiclePrice * BidCalculationFeeParameters.BASIC_FEE_PERCENT;
 
-            if (this.vehicleType == VehicleType.Luxury)
+            if (this.VehicleType == VehicleType.Luxury)
             {
-                return this.pickApplicableFee(
+                return Math.Clamp(
+                    calculatedFee,
                     BidCalculationFeeParameters.BASIC_LUXURY_MIN_FEE,
-                    BidCalculationFeeParameters.BASIC_LUXURY_MAX_FEE,
-                    calculatedFee);
+                    BidCalculationFeeParameters.BASIC_LUXURY_MAX_FEE
+                );
             }
 
-            return this.pickApplicableFee(
-                    BidCalculationFeeParameters.BASIC_COMMON_MIN_FEE,
-                    BidCalculationFeeParameters.BASIC_COMMON_MAX_FEE,
-                    calculatedFee);
+            return Math.Clamp(
+                calculatedFee,
+                BidCalculationFeeParameters.BASIC_COMMON_MIN_FEE,
+                BidCalculationFeeParameters.BASIC_COMMON_MAX_FEE
+            );
+
         }
 
-        public double getSpecialFee()
+        public double GetSpecialFee()
         {
-            if (this.vehicleType == VehicleType.Luxury)
+            if (this.VehicleType == VehicleType.Luxury)
             {
-                return this.vehiclePrice * BidCalculationFeeParameters.SPECIAL_LUXURY_FEE_PERCENT;
+                return this.VehiclePrice * BidCalculationFeeParameters.SPECIAL_LUXURY_FEE_PERCENT;
             }
 
-            return this.vehiclePrice * BidCalculationFeeParameters.SPECIAL_COMMON_FEE_PERCENT;
+            return this.VehiclePrice * BidCalculationFeeParameters.SPECIAL_COMMON_FEE_PERCENT;
         }
 
-        public double getAssociationFee()
+        public double GetAssociationFee()
         {
-            if (this.vehiclePrice >= 1 && this.vehiclePrice <= 500)
+            if (this.VehiclePrice >= 1 && this.VehiclePrice <= 500)
             {
                 return 5;
-            } else if (this.vehiclePrice > 500 && this.vehiclePrice <= 1000)
+            } else if (this.VehiclePrice > 500 && this.VehiclePrice <= 1000)
             {
                 return 10;
-            } else if (this.vehiclePrice > 1000 && this.vehiclePrice <= 3000)
+            } else if (this.VehiclePrice > 1000 && this.VehiclePrice <= 3000)
             {
                 return 15;
             } else
@@ -59,33 +62,18 @@ namespace CarAuctionBidApi.Domain.BidCalculation
 
         }
 
-        public double getStorageFee()
+        public double GetStorageFee()
         {
             return BidCalculationFeeParameters.STORAGE_FEE_AMOUNT;
         }
 
-        public double getTotal()
+        public double GetTotal()
         {
-            return this.vehiclePrice +
-                this.getBasicFee() +
-                this.getSpecialFee() +
-                this.getAssociationFee() +
-                this.getStorageFee();
-        }
-
-        private double pickApplicableFee(double minFee, double maxFee, double calculatedFee)
-        {
-            if (calculatedFee < minFee)
-            {
-                return minFee;
-            }
-
-            if (calculatedFee > maxFee)
-            {
-                return maxFee;
-            }
-
-            return calculatedFee;
+            return this.VehiclePrice +
+                this.GetBasicFee() +
+                this.GetSpecialFee() +
+                this.GetAssociationFee() +
+                this.GetStorageFee();
         }
 
     }

@@ -11,15 +11,15 @@ namespace Tests.Dto.BidCalculationDtoTest
         public void ShouldCreateBidCalculationResponseDtoFromBidCalculation()
 		{
             BidCalculation bidCalculation = new BidCalculation(500, VehicleType.Common);
-            BidCalculationResponseDto dto = BidCalculationResponseDto.create(bidCalculation);
+            BidCalculationResponseDto dto = BidCalculationResponseDto.Create(bidCalculation);
 
-            Assert.AreEqual(dto.vehiclePrice, bidCalculation.vehiclePrice);
-            Assert.AreEqual(dto.vehicleType, "common");
-            Assert.AreEqual(dto.basicFee, bidCalculation.getBasicFee());
-            Assert.AreEqual(dto.specialFee, bidCalculation.getSpecialFee());
-            Assert.AreEqual(dto.associationFee, bidCalculation.getAssociationFee());
-            Assert.AreEqual(dto.storageFee, bidCalculation.getStorageFee());
-            Assert.AreEqual(dto.total, bidCalculation.getTotal());
+            Assert.AreEqual(dto.VehiclePrice, bidCalculation.VehiclePrice);
+            Assert.AreEqual(dto.VehicleType, "common");
+            Assert.AreEqual(dto.BasicFee, bidCalculation.GetBasicFee());
+            Assert.AreEqual(dto.SpecialFee, bidCalculation.GetSpecialFee());
+            Assert.AreEqual(dto.AssociationFee, bidCalculation.GetAssociationFee());
+            Assert.AreEqual(dto.StorageFee, bidCalculation.GetStorageFee());
+            Assert.AreEqual(dto.Total, bidCalculation.GetTotal());
         }
 	}
 }

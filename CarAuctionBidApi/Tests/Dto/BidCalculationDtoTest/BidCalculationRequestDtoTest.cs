@@ -14,10 +14,10 @@ namespace Tests.Dto.BidCalculationDtoTest
             VehicleType vehicleType = VehicleType.Common;
 
             BidCalculationRequestDto dto = new BidCalculationRequestDto(vehiclePrice, vehicleType);
-            BidCalculation bidCalculation = dto.toBidCalculation();
+            BidCalculation bidCalculation = dto.ToBidCalculation();
 
-            Assert.AreEqual(dto.vehiclePrice, bidCalculation.vehiclePrice);
-            Assert.AreEqual(dto.vehicleType, bidCalculation.vehicleType);
+            Assert.AreEqual(dto.VehiclePrice, bidCalculation.VehiclePrice);
+            Assert.AreEqual(dto.VehicleType, bidCalculation.VehicleType);
         }
 	}
 }

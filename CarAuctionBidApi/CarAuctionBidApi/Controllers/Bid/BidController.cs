@@ -12,7 +12,7 @@ public class BidController : ControllerBase
     [ActionName("calculate")]
     public BidCalculationResponseDto Calculate(BidCalculationRequestDto bidCalculationRequestDto)
     {
-        return BidCalculationResponseDto.create(bidCalculationRequestDto.toBidCalculation());
+        return BidCalculationResponseDto.Create(bidCalculationRequestDto.ToBidCalculation());
     }
 }
 
