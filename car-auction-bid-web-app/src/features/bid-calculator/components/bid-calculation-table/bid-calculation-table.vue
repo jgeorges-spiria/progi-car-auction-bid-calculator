@@ -29,14 +29,12 @@ function handleIsMobile(isMobileFlag: boolean) {
 .bidCalculationTable {
     word-wrap:break-word
 }
-.bidCalculationTableHeader {
-}
+
 .bidCalculationTableHeaderItem {
     padding: 0.5em 1em;
     border: 1px solid v-bind(Color.OffWhite);
 }
-.bidCalculationTableRow {
-}
+
 .bidCalculationTableRowItem {
     padding: 0.5em 1em;
     border: 1px solid v-bind(Color.OffWhite);
