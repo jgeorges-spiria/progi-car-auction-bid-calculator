@@ -1,4 +1,4 @@
 export enum VehicleType {
-    Common = "Common",
-    Luxury = "Luxury"
+  Common = "Common",
+  Luxury = "Luxury",
 }

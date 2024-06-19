@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BidCalculatorFeature from './features/bid-calculator/bid-calculator.feature.vue'
+import BidCalculatorFeature from "./features/bid-calculator/bid-calculator.feature.vue";
 </script>
 
 <template>
-  <BidCalculatorFeature/>
+  <BidCalculatorFeature />
 </template>
 
 <style scoped>

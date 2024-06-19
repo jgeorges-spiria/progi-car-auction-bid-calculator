@@ -1,4 +1,4 @@
-export const CurrencyFormatter = new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: 'CAD'
+export const CurrencyFormatter = new Intl.NumberFormat("en-CA", {
+  style: "currency",
+  currency: "CAD",
 });
