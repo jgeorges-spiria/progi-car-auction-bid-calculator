@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import CarDetailsForm from "./components/car-details-form/car-details-form.vue";
+import CarDetailsForm from "./components/car-details-form.vue";
 import BidCalculationTable from "./components/bid-calculation-table/bid-calculation-table.vue";
-import FailedBidCalculationErrorBanner from "./components/failed-bid-calculation-error-banner/failed-bid-calculation-error-banner.vue";
+import FailedBidCalculationErrorBanner from "./components/failed-bid-calculation-error-banner.vue";
 import { BidCalculationFactory } from "../../models/bid-calculation/bid-calculation.factory";
 import { VehicleType } from "../../models/vehicle/vehicle-type.enum";
 import { CarAuctionBidApiService } from "../../api/car-auction-bid-api/services/car-auction-bid-api.service";

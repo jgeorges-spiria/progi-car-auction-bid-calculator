@@ -13,37 +13,43 @@ const props = defineProps({
     <tbody>
       <tr>
         <td class="bidCalculationTableRowItem">Vehicle Price</td>
-        <td class="bidCalculationTableRowItem">
+        <td data-testid="vehiclePrice" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.vehiclePrice) }}
         </td>
       </tr>
       <tr>
+        <td class="bidCalculationTableRowItem">Vehicle Type</td>
+        <td data-testid="vehicleType" class="bidCalculationTableRowItem">
+          {{ props.bidCalculation.vehicleType }}
+        </td>
+      </tr>
+      <tr>
         <td class="bidCalculationTableRowItem">Basic Fee</td>
-        <td class="bidCalculationTableRowItem">
+        <td data-testid="basicFee" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.basicFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Special Fee</td>
-        <td class="bidCalculationTableRowItem">
+        <td data-testid="specialFee" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.specialFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Association Fee</td>
-        <td class="bidCalculationTableRowItem">
+        <td data-testid="associationFee" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.associationFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Storage Fee</td>
-        <td class="bidCalculationTableRowItem">
+        <td data-testid="storageFee" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.storageFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Total</td>
-        <td class="bidCalculationTableRowItem">
+        <td data-testid="total" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.total) }}
         </td>
       </tr>

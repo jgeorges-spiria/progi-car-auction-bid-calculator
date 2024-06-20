@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import { Ref, ref } from "vue";
-import { VueInputEvent } from "../../../../shared/types/vue-input-event.interface";
-import { PriceValidator } from "../../../../shared/validators/price.validator";
-import { Debouncer } from "../../../../shared/utils/debouncer.util";
-import { VehicleType } from "../../../../models/vehicle/vehicle-type.enum";
-import {
-  DEBOUNCE_DELAY_IN_MILLIS,
-  MAX_VEHICLE_PRICE,
-  MIN_VEHICLE_PRICE,
-  MAX_VEHICLE_PRICE_LENGTH,
-} from "./types/car-details-form.constants";
-import { Color } from "../../../../shared/styles/color.enum";
+import { Ref, ref, defineProps } from "vue";
+import { VueInputEvent } from "../../../shared/types/vue-input-event.interface";
+import { PriceValidator } from "../../../shared/validators/price.validator";
+import { Debouncer } from "../../../shared/utils/debouncer.util";
+import { VehicleType } from "../../../models/vehicle/vehicle-type.enum";
+import { Color } from "../../../shared/styles/color.enum";
+
+const props = defineProps({
+  debounceInMillis: { type: Number, required: false, default: 500 },
+});
 
 const emit = defineEmits<{
   (e: "calculateBid", vehiclePrice: string, vehicleType: VehicleType): void;
 }>();
+
+const MIN_VEHICLE_PRICE = 1;
+const MAX_VEHICLE_PRICE = 999999999;
+const MAX_VEHICLE_PRICE_LENGTH = 9;
 
 const debouncer = new Debouncer();
 const vehiclePrice: Ref<string> = ref("");
@@ -45,7 +47,7 @@ function calculateBid() {
   if (!showVehiclePriceError.value) {
     debouncer.debounce(() => {
       emit("calculateBid", vehiclePrice.value, vehicleType.value);
-    }, DEBOUNCE_DELAY_IN_MILLIS);
+    }, props.debounceInMillis);
   }
 }
 </script>
@@ -55,6 +57,7 @@ function calculateBid() {
     <div class="formInput">
       <label name="vehicle-price">Vehicle Price</label>
       <input
+        data-testid="vehiclePriceInput"
         class="vehiclePriceInput"
         v-model.trim="vehiclePrice"
         @input="handleVehiclePriceChange"
@@ -68,17 +71,22 @@ function calculateBid() {
     <div class="formInput">
       <label name="vehicle-type">Vehicle Type</label>
       <select
+        data-testid="vehicleTypeSelect"
         class="vehicleTypeInput"
         v-model="vehicleType"
         @input="calculateBid"
       >
-        <option v-for="option in vehicleTypeOptions" :value="option.value">
+        <option
+          v-for="option in vehicleTypeOptions"
+          :value="option.value"
+          :data-testid="option.value"
+        >
           {{ option.value }}
         </option>
       </select>
     </div>
   </form>
-  <span v-show="showVehiclePriceError"
+  <span data-testid="vehiclePriceErrorMessage" v-show="showVehiclePriceError"
     >Invalid Vehicle Price. Numbers only please.</span
   >
 </template>

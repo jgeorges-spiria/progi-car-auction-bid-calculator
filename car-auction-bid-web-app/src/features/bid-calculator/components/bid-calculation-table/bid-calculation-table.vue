@@ -20,10 +20,12 @@ function handleIsMobile(isMobileFlag: boolean) {
 <template>
   <IsMobile @is-mobile="handleIsMobile"></IsMobile>
   <BidCalculationTableDesktop
+    data-testid="bidCalculationTableDesktop"
     v-show="!isMobile"
     :bid-calculation="props.bidCalculation"
   ></BidCalculationTableDesktop>
   <BidCalculationTableMobile
+    data-testid="bidCalculationTableMobile"
     v-show="isMobile"
     :bid-calculation="props.bidCalculation"
   ></BidCalculationTableMobile>

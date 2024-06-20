@@ -1,10 +1,11 @@
+import { describe, expect, test } from "vitest";
 import { BidCalculationFactory } from "../../../models/bid-calculation/bid-calculation.factory";
 import { BidCalculation } from "../../../models/bid-calculation/bid-calculation.interface";
 import { VehicleType } from "../../../models/vehicle/vehicle-type.enum";
 
 describe("BidCalculationFactory", () => {
   describe("createDefault", () => {
-    it("should return a BidCalculation with zeroed values and common vehicle-type", () => {
+    test("should return a BidCalculation with zeroed values and common vehicle-type", () => {
       const expected: BidCalculation = {
         vehiclePrice: 0,
         vehicleType: VehicleType.Common,

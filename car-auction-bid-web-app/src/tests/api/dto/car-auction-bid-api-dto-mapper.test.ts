@@ -1,3 +1,4 @@
+import { describe, expect, beforeEach, test } from "vitest";
 import { BidCalculationResponseDto } from "../../../api/car-auction-bid-api/dto/bid-calculation-response.dto";
 import { CarAuctionBidApiDtoMapper } from "../../../api/car-auction-bid-api/dto/car-auction-bid-api-dto-mapper";
 import { BidCalculation } from "../../../models/bid-calculation/bid-calculation.interface";
@@ -19,7 +20,7 @@ describe("CarAuctionBidApiDtoMapper", () => {
   });
 
   describe("mapToBidCalculation", () => {
-    it("should map a BidCalculationResponseDto to a BidCalculation model", () => {
+    test("should map a BidCalculationResponseDto to a BidCalculation model", () => {
       const expected: BidCalculation = {
         vehiclePrice: 398,
         vehicleType: VehicleType.Common,
@@ -38,12 +39,12 @@ describe("CarAuctionBidApiDtoMapper", () => {
   });
 
   describe("mapToVehicleType", () => {
-    it("should map a vehicleTypeDto: 'common' to a VehicleType.Common", () => {
+    test("should map a vehicleTypeDto: 'common' to a VehicleType.Common", () => {
       expect(CarAuctionBidApiDtoMapper.mapToVehicleType("common")).toBe(
         VehicleType.Common,
       );
     });
-    it("should map a vehicleTypeDto: 'luxury' to a VehicleType.Luxury", () => {
+    test("should map a vehicleTypeDto: 'luxury' to a VehicleType.Luxury", () => {
       expect(CarAuctionBidApiDtoMapper.mapToVehicleType("luxury")).toBe(
         VehicleType.Luxury,
       );

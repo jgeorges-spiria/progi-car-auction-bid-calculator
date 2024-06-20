@@ -8,8 +8,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "test": "npx jest",
-    "test:watch": "npx jest --watch",
+    "test": "npx vitest",
+    "test:watch": "npx vitest --watch",
     "lint": "npx eslint ."
   },
   "dependencies": {
@@ -17,15 +17,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
+    "@testing-library/vue": "^8.1.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/jest": "^29.5.12",
     "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",
+    "jsdom": "^24.1.0",
     "prettier": "3.3.2",
-    "ts-jest": "^29.1.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.13.1",
     "vite": "^5.2.0",
+    "vitest": "^1.6.0",
     "vue-tsc": "^2.0.6"
   }
 }
