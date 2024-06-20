@@ -6,7 +6,7 @@ Created using Visual Studio and ASP.NET Core (.NET 7.0)
 
 ## Pre-requisites
 
-- .NET 7.0
+- .NET 8.0
 
 ## Installation
 
