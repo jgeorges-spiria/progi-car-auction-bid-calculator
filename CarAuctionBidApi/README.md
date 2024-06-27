@@ -2,7 +2,7 @@
 
 A RESTful Http Service to support the Car Auction Bid Web App.
 
-Created using Visual Studio and ASP.NET Core (.NET 7.0)
+Created using Visual Studio and ASP.NET Core (.NET 8.0)
 
 ## Pre-requisites
 
