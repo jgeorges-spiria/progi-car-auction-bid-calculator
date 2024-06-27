@@ -20,7 +20,6 @@
     <None Remove="Dto\BidCalculationDto\" />
     <None Remove="Domain\Vehicle\" />
     <None Remove="Dto\VehicleTypeDto\" />
-    <None Remove="Controllers\Bid\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -29,6 +28,5 @@
     <Folder Include="Dto\BidCalculationDto\" />
     <Folder Include="Domain\Vehicle\" />
     <Folder Include="Dto\VehicleTypeDto\" />
-    <Folder Include="Controllers\Bid\" />
   </ItemGroup>
 </Project>
