@@ -7,30 +7,42 @@ namespace CarAuctionBidApi.Domain.BidCalculation
         public double VehiclePrice { get; }
         public VehicleType VehicleType { get; }
 
+        private double BASIC_LUXURY_MIN_FEE { get; } = 25;
+        private double BASIC_LUXURY_MAX_FEE { get; } = 200;
+        private double BASIC_COMMON_MIN_FEE { get; } = 10;
+        private double BASIC_COMMON_MAX_FEE { get; } = 50;
+        private double BASIC_FEE_PERCENT { get; } = 0.10;
+        private double SPECIAL_LUXURY_FEE_PERCENT { get; } = 0.04;
+        private double SPECIAL_COMMON_FEE_PERCENT { get; } = 0.02;
+
 
         public BidCalculation(double vehiclePrice, VehicleType vehicleType)
         {
+            if (vehiclePrice < 1)
+            {
+                throw new ArgumentException("vehiclePrice must be greater than 0");
+            }
             this.VehiclePrice = vehiclePrice;
             this.VehicleType = vehicleType;
         }
 
         public double GetBasicFee()
         {
-            double calculatedFee = this.VehiclePrice * BidCalculationFeeParameters.BASIC_FEE_PERCENT;
+            double calculatedFee = this.VehiclePrice * this.BASIC_FEE_PERCENT;
 
             if (this.VehicleType == VehicleType.Luxury)
             {
                 return Math.Clamp(
                     calculatedFee,
-                    BidCalculationFeeParameters.BASIC_LUXURY_MIN_FEE,
-                    BidCalculationFeeParameters.BASIC_LUXURY_MAX_FEE
+                    this.BASIC_LUXURY_MIN_FEE,
+                    this.BASIC_LUXURY_MAX_FEE
                 );
             }
 
             return Math.Clamp(
                 calculatedFee,
-                BidCalculationFeeParameters.BASIC_COMMON_MIN_FEE,
-                BidCalculationFeeParameters.BASIC_COMMON_MAX_FEE
+                this.BASIC_COMMON_MIN_FEE,
+                this.BASIC_COMMON_MAX_FEE
             );
 
         }
@@ -39,10 +51,10 @@ namespace CarAuctionBidApi.Domain.BidCalculation
         {
             if (this.VehicleType == VehicleType.Luxury)
             {
-                return this.VehiclePrice * BidCalculationFeeParameters.SPECIAL_LUXURY_FEE_PERCENT;
+                return this.VehiclePrice * this.SPECIAL_LUXURY_FEE_PERCENT;
             }
 
-            return this.VehiclePrice * BidCalculationFeeParameters.SPECIAL_COMMON_FEE_PERCENT;
+            return this.VehiclePrice * this.SPECIAL_COMMON_FEE_PERCENT;
         }
 
         public double GetAssociationFee()
@@ -68,7 +80,7 @@ namespace CarAuctionBidApi.Domain.BidCalculation
 
         public double GetStorageFee()
         {
-            return BidCalculationFeeParameters.STORAGE_FEE_AMOUNT;
+            return 100;
         }
 
         public double GetTotal()
