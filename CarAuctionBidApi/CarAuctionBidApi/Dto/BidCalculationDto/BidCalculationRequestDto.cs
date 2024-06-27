@@ -14,13 +14,13 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
 
         public BidCalculationRequestDto(double vehiclePrice, VehicleType vehicleType)
         {
-            this.VehiclePrice = vehiclePrice;
-            this.VehicleType = vehicleType;
+            VehiclePrice = vehiclePrice;
+            VehicleType = vehicleType;
         }
 
         public BidCalculation ToBidCalculation()
         {
-            return new BidCalculation(this.VehiclePrice, this.VehicleType);
+            return new BidCalculation(VehiclePrice, VehicleType);
         }
     }
 }

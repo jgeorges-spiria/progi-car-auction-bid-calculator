@@ -28,13 +28,13 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
 
         public BidCalculationResponseDto(double vehiclePrice, string vehicleType, double basicFee, double specialFee, double associationFee, double storageFee, double total)
         {
-            this.VehiclePrice = vehiclePrice;
-            this.VehicleType = vehicleType;
-            this.BasicFee = basicFee;
-            this.SpecialFee = specialFee;
-            this.AssociationFee = associationFee;
-            this.StorageFee = storageFee;
-            this.Total = total;
+            VehiclePrice = vehiclePrice;
+            VehicleType = vehicleType;
+            BasicFee = basicFee;
+            SpecialFee = specialFee;
+            AssociationFee = associationFee;
+            StorageFee = storageFee;
+            Total = total;
         }
 
     }

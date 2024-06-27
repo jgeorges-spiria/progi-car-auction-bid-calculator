@@ -22,52 +22,52 @@ namespace CarAuctionBidApi.Domain.BidCalculation
             {
                 throw new ArgumentException("vehiclePrice must be greater than 0");
             }
-            this.VehiclePrice = vehiclePrice;
-            this.VehicleType = vehicleType;
+            VehiclePrice = vehiclePrice;
+            VehicleType = vehicleType;
         }
 
         public double GetBasicFee()
         {
-            double calculatedFee = this.VehiclePrice * this.BASIC_FEE_PERCENT;
+            double calculatedFee = VehiclePrice * BASIC_FEE_PERCENT;
 
-            if (this.VehicleType == VehicleType.Luxury)
+            if (VehicleType == VehicleType.Luxury)
             {
                 return Math.Clamp(
                     calculatedFee,
-                    this.BASIC_LUXURY_MIN_FEE,
-                    this.BASIC_LUXURY_MAX_FEE
+                    BASIC_LUXURY_MIN_FEE,
+                    BASIC_LUXURY_MAX_FEE
                 );
             }
 
             return Math.Clamp(
                 calculatedFee,
-                this.BASIC_COMMON_MIN_FEE,
-                this.BASIC_COMMON_MAX_FEE
+                BASIC_COMMON_MIN_FEE,
+                BASIC_COMMON_MAX_FEE
             );
 
         }
 
         public double GetSpecialFee()
         {
-            if (this.VehicleType == VehicleType.Luxury)
+            if (VehicleType == VehicleType.Luxury)
             {
-                return this.VehiclePrice * this.SPECIAL_LUXURY_FEE_PERCENT;
+                return VehiclePrice * SPECIAL_LUXURY_FEE_PERCENT;
             }
 
-            return this.VehiclePrice * this.SPECIAL_COMMON_FEE_PERCENT;
+            return VehiclePrice * SPECIAL_COMMON_FEE_PERCENT;
         }
 
         public double GetAssociationFee()
         {
-            if (this.VehiclePrice >= 1 && this.VehiclePrice <= 500)
+            if (VehiclePrice >= 1 && VehiclePrice <= 500)
             {
                 return 5;
             }
-            else if (this.VehiclePrice > 500 && this.VehiclePrice <= 1000)
+            else if (VehiclePrice > 500 && VehiclePrice <= 1000)
             {
                 return 10;
             }
-            else if (this.VehiclePrice > 1000 && this.VehiclePrice <= 3000)
+            else if (VehiclePrice > 1000 && VehiclePrice <= 3000)
             {
                 return 15;
             }
@@ -85,11 +85,11 @@ namespace CarAuctionBidApi.Domain.BidCalculation
 
         public double GetTotal()
         {
-            return this.VehiclePrice +
-                this.GetBasicFee() +
-                this.GetSpecialFee() +
-                this.GetAssociationFee() +
-                this.GetStorageFee();
+            return VehiclePrice +
+                GetBasicFee() +
+                GetSpecialFee() +
+                GetAssociationFee() +
+                GetStorageFee();
         }
 
     }
