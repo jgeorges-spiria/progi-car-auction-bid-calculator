@@ -3,6 +3,7 @@ import { render, screen, within } from "@testing-library/vue";
 import BidCalculationTableDesktop from "../../../../../../features/bid-calculator/components/bid-calculation-table/components/bid-calculation-table-desktop.vue";
 import { BidCalculation } from "../../../../../../models/bid-calculation/bid-calculation.interface";
 import { VehicleType } from "../../../../../../models/vehicle/vehicle-type.enum";
+import { TestId } from "../../../../../../test-id";
 
 describe("BidCalculationTableDesktop", () => {
   let bidCalculation: BidCalculation;
@@ -21,13 +22,27 @@ describe("BidCalculationTableDesktop", () => {
 
   test("should render the all of the properties of bid calculation with prices in a currency format", () => {
     render(BidCalculationTableDesktop, { props: { bidCalculation } });
-    const vehiclePrice = screen.getByTestId("vehiclePriceDesktop");
-    const vehicleType = screen.getByTestId("vehicleTypeDesktop");
-    const basicFee = screen.getByTestId("basicFeeDesktop");
-    const specialFee = screen.getByTestId("specialFeeDesktop");
-    const associationFee = screen.getByTestId("associationFeeDesktop");
-    const storageFee = screen.getByTestId("storageFeeDesktop");
-    const total = screen.getByTestId("totalDesktop");
+    const vehiclePrice = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.VehiclePrice,
+    );
+    const vehicleType = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.VehicleType,
+    );
+    const basicFee = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.BasicFee,
+    );
+    const specialFee = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.SpecialFee,
+    );
+    const associationFee = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.AssociationFee,
+    );
+    const storageFee = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.StorageFee,
+    );
+    const total = screen.getByTestId(
+      TestId.BidCalculationTable.DesktopTable.Total,
+    );
 
     within(vehiclePrice).getByText("$1,000.00");
     within(vehicleType).getByText(VehicleType.Common);

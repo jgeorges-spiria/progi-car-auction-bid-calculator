@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Color } from "../../../shared/styles/color.enum";
+import { TestId } from "../../../test-id";
 
 const props = defineProps({
   showBanner: { type: Boolean, required: true },
@@ -15,7 +16,11 @@ function hideBanner() {
 </script>
 
 <template>
-  <p data-testid="errorBanner" class="banner" v-show="props.showBanner">
+  <p
+    :data-testid="TestId.FailedBidCalculationErrorBanner.ErrorBanner"
+    class="banner"
+    v-show="props.showBanner"
+  >
     <span>Failed to Calculate Bid. Please try again later.</span>
     <br />
     <button class="errorButton" @click="hideBanner">OK</button>

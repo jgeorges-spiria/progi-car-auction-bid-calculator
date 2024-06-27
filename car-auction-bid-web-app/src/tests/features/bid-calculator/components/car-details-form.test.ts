@@ -2,6 +2,7 @@ import { expect, test, beforeEach, afterEach, vi, describe } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/vue";
 import CarDetailsForm from "../../../../features/bid-calculator/components/car-details-form.vue";
 import { VehicleType } from "../../../../models/vehicle/vehicle-type.enum";
+import { TestId } from "../../../../test-id";
 
 describe("CarDetailsForm", () => {
   beforeEach(() => {
@@ -14,10 +15,12 @@ describe("CarDetailsForm", () => {
 
   test("should show vehicle price error when vehicle price is invalid", async () => {
     render(CarDetailsForm);
-    const vehiclePriceInput = screen.getByTestId("vehiclePriceInput");
+    const vehiclePriceInput = screen.getByTestId(
+      TestId.CarDetailsForm.VehiclePriceInput,
+    );
     await fireEvent.update(vehiclePriceInput, "abcd");
     const vehiclePriceErrorMessage = screen.getByTestId(
-      "vehiclePriceErrorMessage",
+      TestId.CarDetailsForm.VehiclePriceErrorMessage,
     );
     expect(vehiclePriceErrorMessage.style.display).toBe("");
   });
@@ -28,7 +31,9 @@ describe("CarDetailsForm", () => {
     const expectedVehiclePrice = "100";
     const expectedVehicleType = VehicleType.Common;
 
-    const vehiclePriceInput = screen.getByTestId("vehiclePriceInput");
+    const vehiclePriceInput = screen.getByTestId(
+      TestId.CarDetailsForm.VehiclePriceInput,
+    );
     await fireEvent.update(vehiclePriceInput, expectedVehiclePrice);
 
     vi.runAllTimers();
@@ -46,10 +51,14 @@ describe("CarDetailsForm", () => {
     const expectedVehiclePrice = "100";
     const expectedVehicleType = VehicleType.Luxury;
 
-    const vehiclePriceInput = screen.getByTestId("vehiclePriceInput");
+    const vehiclePriceInput = screen.getByTestId(
+      TestId.CarDetailsForm.VehiclePriceInput,
+    );
     await fireEvent.update(vehiclePriceInput, expectedVehiclePrice);
 
-    const vehicleTypeSelect = screen.getByTestId("vehicleTypeSelect");
+    const vehicleTypeSelect = screen.getByTestId(
+      TestId.CarDetailsForm.VehicleTypeSelect,
+    );
     await fireEvent.update(vehicleTypeSelect, expectedVehicleType);
 
     vi.runAllTimers();

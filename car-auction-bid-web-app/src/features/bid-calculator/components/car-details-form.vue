@@ -5,6 +5,7 @@ import { PriceValidator } from "../../../shared/validators/price.validator";
 import { Debouncer } from "../../../shared/utils/debouncer.util";
 import { VehicleType } from "../../../models/vehicle/vehicle-type.enum";
 import { Color } from "../../../shared/styles/color.enum";
+import { TestId } from "../../../test-id";
 
 const props = defineProps({
   debounceInMillis: { type: Number, required: false, default: 500 },
@@ -57,7 +58,7 @@ function calculateBid() {
     <div class="formInput">
       <label name="vehicle-price">Vehicle Price</label>
       <input
-        data-testid="vehiclePriceInput"
+        :data-testid="TestId.CarDetailsForm.VehiclePriceInput"
         class="vehiclePriceInput"
         v-model.trim="vehiclePrice"
         @input="handleVehiclePriceChange"
@@ -71,7 +72,7 @@ function calculateBid() {
     <div class="formInput">
       <label name="vehicle-type">Vehicle Type</label>
       <select
-        data-testid="vehicleTypeSelect"
+        :data-testid="TestId.CarDetailsForm.VehicleTypeSelect"
         class="vehicleTypeInput"
         v-model="vehicleType"
         @input="calculateBid"
@@ -86,7 +87,9 @@ function calculateBid() {
       </select>
     </div>
   </form>
-  <span data-testid="vehiclePriceErrorMessage" v-show="showVehiclePriceError"
+  <span
+    :data-testid="TestId.CarDetailsForm.VehiclePriceErrorMessage"
+    v-show="showVehiclePriceError"
     >Invalid Vehicle Price. Numbers only please.</span
   >
 </template>

@@ -5,6 +5,7 @@ import BidCalculationTableDesktop from "./components/bid-calculation-table-deskt
 import BidCalculationTableMobile from "./components/bid-calculation-table-mobile.vue";
 import IsMobile from "../../../../shared/components/is-mobile.vue";
 import { Color } from "../../../../shared/styles/color.enum";
+import { TestId } from "../../../../test-id";
 
 const props = defineProps({
   bidCalculation: { type: Object as PropType<BidCalculation>, required: true },
@@ -20,12 +21,12 @@ function handleIsMobile(isMobileFlag: boolean) {
 <template>
   <IsMobile @is-mobile="handleIsMobile"></IsMobile>
   <BidCalculationTableDesktop
-    data-testid="bidCalculationTableDesktop"
+    :data-testid="TestId.BidCalculationTable.Desktop"
     v-show="!isMobile"
     :bid-calculation="props.bidCalculation"
   ></BidCalculationTableDesktop>
   <BidCalculationTableMobile
-    data-testid="bidCalculationTableMobile"
+    :data-testid="TestId.BidCalculationTable.Mobile"
     v-show="isMobile"
     :bid-calculation="props.bidCalculation"
   ></BidCalculationTableMobile>
