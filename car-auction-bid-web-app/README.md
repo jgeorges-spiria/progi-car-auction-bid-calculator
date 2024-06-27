@@ -29,6 +29,11 @@ To run tests, execute the following command inside the `car-auction-bid-web-app`
 npm test
 ```
 
+```bash
+# with coverage
+npm test:coverage
+```
+
 ---
 
 Created by Johny Georges
