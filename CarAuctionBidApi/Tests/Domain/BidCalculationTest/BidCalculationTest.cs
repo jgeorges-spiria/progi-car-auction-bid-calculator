@@ -5,12 +5,12 @@ namespace Tests.Domain.BidCalculationTest
 {
     [TestClass]
     public class BidCalculationTest
-	{
+    {
         private double assertDelta = 0.00001;
 
         [TestMethod]
         public void ShouldSetTheVehiclePriceAndVehicleType()
-		{
+        {
             double vehiclePrice = 500;
             VehicleType vehicleType = VehicleType.Common;
             BidCalculation bidCalculation = new BidCalculation(vehiclePrice, vehicleType);

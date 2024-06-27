@@ -6,10 +6,10 @@ namespace Tests.Dto.BidCalculationDtoTest
 {
     [TestClass]
     public class BidCalculationResponseDtoTest
-	{
+    {
         [TestMethod]
         public void ShouldCreateBidCalculationResponseDtoFromBidCalculation()
-		{
+        {
             BidCalculation bidCalculation = new BidCalculation(500, VehicleType.Common);
             BidCalculationResponseDto dto = BidCalculationResponseDto.Create(bidCalculation);
 
@@ -21,6 +21,6 @@ namespace Tests.Dto.BidCalculationDtoTest
             Assert.AreEqual(dto.StorageFee, bidCalculation.GetStorageFee());
             Assert.AreEqual(dto.Total, bidCalculation.GetTotal());
         }
-	}
+    }
 }
 

@@ -5,12 +5,12 @@ namespace Tests.Dto.VehicleTypeDtoTest
 {
     [TestClass]
     public class VehicleTypeDtoTest
-	{
+    {
         [TestMethod]
         public void ShouldConvertLuxuryVehicleTypeToLuxuryString()
-		{
+        {
             Assert.AreEqual(VehicleTypeDtoMapper.ToString(VehicleType.Luxury), "luxury");
-		}
+        }
 
         [TestMethod]
         public void ShouldConvertCommonVehicleTypeToCommonString()

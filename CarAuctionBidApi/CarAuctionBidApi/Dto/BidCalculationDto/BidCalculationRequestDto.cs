@@ -4,8 +4,8 @@ using CarAuctionBidApi.Domain.Vehicle;
 
 namespace CarAuctionBidApi.Dto.BidCalculationDto
 {
-	public class BidCalculationRequestDto
-	{
+    public class BidCalculationRequestDto
+    {
         [Required, Range(1, 999999999)]
         public double VehiclePrice { get; set; }
 
@@ -13,15 +13,15 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
         public VehicleType VehicleType { get; set; }
 
         public BidCalculationRequestDto(double vehiclePrice, VehicleType vehicleType)
-		{
-			this.VehiclePrice = vehiclePrice;
-			this.VehicleType = vehicleType;
-		}
+        {
+            this.VehiclePrice = vehiclePrice;
+            this.VehicleType = vehicleType;
+        }
 
-		public BidCalculation ToBidCalculation()
-		{
-			return new BidCalculation(this.VehiclePrice, this.VehicleType);
-		}
-	}
+        public BidCalculation ToBidCalculation()
+        {
+            return new BidCalculation(this.VehiclePrice, this.VehicleType);
+        }
+    }
 }
 

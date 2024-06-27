@@ -4,8 +4,8 @@ namespace CarAuctionBidApi.Domain.Vehicle
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum VehicleType
-	{
-		Common,
-		Luxury
-	}
+    {
+        Common,
+        Luxury
+    }
 }

@@ -1,9 +1,8 @@
-﻿using System;
-namespace CarAuctionBidApi.Domain.BidCalculation
+﻿namespace CarAuctionBidApi.Domain.BidCalculation
 {
-	public struct BidCalculationFeeParameters
-	{
-		public static double BASIC_LUXURY_MIN_FEE { get; } = 25;
+    public struct BidCalculationFeeParameters
+    {
+        public static double BASIC_LUXURY_MIN_FEE { get; } = 25;
         public static double BASIC_LUXURY_MAX_FEE { get; } = 200;
 
         public static double BASIC_COMMON_MIN_FEE { get; } = 10;

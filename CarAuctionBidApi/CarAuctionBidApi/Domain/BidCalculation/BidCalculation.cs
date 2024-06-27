@@ -2,13 +2,14 @@
 
 namespace CarAuctionBidApi.Domain.BidCalculation
 {
-	public class BidCalculation
-	{
+    public class BidCalculation
+    {
         public double VehiclePrice { get; }
         public VehicleType VehicleType { get; }
 
-        
-        public BidCalculation(double vehiclePrice, VehicleType vehicleType) {
+
+        public BidCalculation(double vehiclePrice, VehicleType vehicleType)
+        {
             this.VehiclePrice = vehiclePrice;
             this.VehicleType = vehicleType;
         }
@@ -49,13 +50,16 @@ namespace CarAuctionBidApi.Domain.BidCalculation
             if (this.VehiclePrice >= 1 && this.VehiclePrice <= 500)
             {
                 return 5;
-            } else if (this.VehiclePrice > 500 && this.VehiclePrice <= 1000)
+            }
+            else if (this.VehiclePrice > 500 && this.VehiclePrice <= 1000)
             {
                 return 10;
-            } else if (this.VehiclePrice > 1000 && this.VehiclePrice <= 3000)
+            }
+            else if (this.VehiclePrice > 1000 && this.VehiclePrice <= 3000)
             {
                 return 15;
-            } else
+            }
+            else
             {
                 return 20;
             }

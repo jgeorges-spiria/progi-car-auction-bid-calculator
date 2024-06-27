@@ -6,10 +6,10 @@ namespace Tests.Dto.BidCalculationDtoTest
 {
     [TestClass]
     public class BidCalculationRequestDtoTest
-	{
+    {
         [TestMethod]
         public void ShouldConvertToBidCalculationWithTheDtoInputs()
-		{
+        {
             double vehiclePrice = 500;
             VehicleType vehicleType = VehicleType.Common;
 
@@ -19,6 +19,6 @@ namespace Tests.Dto.BidCalculationDtoTest
             Assert.AreEqual(dto.VehiclePrice, bidCalculation.VehiclePrice);
             Assert.AreEqual(dto.VehicleType, bidCalculation.VehicleType);
         }
-	}
+    }
 }
 

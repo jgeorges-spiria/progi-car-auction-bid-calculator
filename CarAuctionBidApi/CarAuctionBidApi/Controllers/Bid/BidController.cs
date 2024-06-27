@@ -15,4 +15,3 @@ public class BidController : ControllerBase
         return BidCalculationResponseDto.Create(bidCalculationRequestDto.ToBidCalculation());
     }
 }
-

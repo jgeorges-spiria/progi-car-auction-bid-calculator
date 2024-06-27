@@ -3,8 +3,8 @@ using CarAuctionBidApi.Dto.VehicleTypeDto;
 
 namespace CarAuctionBidApi.Dto.BidCalculationDto
 {
-	public class BidCalculationResponseDto
-	{
+    public class BidCalculationResponseDto
+    {
         public double VehiclePrice { get; }
         public string VehicleType { get; }
         public double BasicFee { get; }
@@ -14,7 +14,7 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
         public double Total { get; }
 
         public static BidCalculationResponseDto Create(BidCalculation bidCalculation)
-		{
+        {
             return new BidCalculationResponseDto(
                 bidCalculation.VehiclePrice,
                 VehicleTypeDtoMapper.ToString(bidCalculation.VehicleType),
@@ -26,7 +26,8 @@ namespace CarAuctionBidApi.Dto.BidCalculationDto
                 );
         }
 
-        public BidCalculationResponseDto(double vehiclePrice, string vehicleType, double basicFee, double specialFee, double associationFee, double storageFee, double total) {
+        public BidCalculationResponseDto(double vehiclePrice, string vehicleType, double basicFee, double specialFee, double associationFee, double storageFee, double total)
+        {
             this.VehiclePrice = vehiclePrice;
             this.VehicleType = vehicleType;
             this.BasicFee = basicFee;
