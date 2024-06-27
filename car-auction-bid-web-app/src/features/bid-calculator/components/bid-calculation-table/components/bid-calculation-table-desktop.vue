@@ -9,8 +9,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <table class="bidCalculationTable">
-    <thead class="bidCalculationTableHeader">
+  <table>
+    <thead>
       <th class="bidCalculationTableHeaderItem">Vehicle Price</th>
       <th class="bidCalculationTableHeaderItem">Vehicle Type</th>
       <th class="bidCalculationTableHeaderItem">Basic Fee</th>
@@ -20,26 +20,32 @@ const props = defineProps({
       <th class="bidCalculationTableHeaderItem">Total</th>
     </thead>
     <tbody>
-      <tr class="bidCalculationTableRow">
-        <td data-testid="vehiclePrice" class="bidCalculationTableRowItem">
+      <tr>
+        <td
+          data-testid="vehiclePriceDesktop"
+          class="bidCalculationTableRowItem"
+        >
           {{ CurrencyFormatter.format(props.bidCalculation.vehiclePrice) }}
         </td>
-        <td data-testid="vehicleType" class="bidCalculationTableRowItem">
+        <td data-testid="vehicleTypeDesktop" class="bidCalculationTableRowItem">
           {{ props.bidCalculation.vehicleType }}
         </td>
-        <td data-testid="basicFee" class="bidCalculationTableRowItem">
+        <td data-testid="basicFeeDesktop" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.basicFee) }}
         </td>
-        <td data-testid="specialFee" class="bidCalculationTableRowItem">
+        <td data-testid="specialFeeDesktop" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.specialFee) }}
         </td>
-        <td data-testid="associationFee" class="bidCalculationTableRowItem">
+        <td
+          data-testid="associationFeeDesktop"
+          class="bidCalculationTableRowItem"
+        >
           {{ CurrencyFormatter.format(props.bidCalculation.associationFee) }}
         </td>
-        <td data-testid="storageFee" class="bidCalculationTableRowItem">
+        <td data-testid="storageFeeDesktop" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.storageFee) }}
         </td>
-        <td data-testid="total" class="bidCalculationTableRowItem">
+        <td data-testid="totalDesktop" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.total) }}
         </td>
       </tr>
@@ -48,15 +54,9 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.bidCalculationTable {
-}
-.bidCalculationTableHeader {
-}
 .bidCalculationTableHeaderItem {
   padding: 0.5em 1em;
   border: 1px solid #eeeeee;
-}
-.bidCalculationTableRow {
 }
 .bidCalculationTableRowItem {
   padding: 0.5em 1em;

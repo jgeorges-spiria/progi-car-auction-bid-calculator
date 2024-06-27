@@ -21,13 +21,13 @@ describe("BidCalculationTableMobile", () => {
 
   test("should render the all of the properties of bid calculation with prices in a currency format", () => {
     render(BidCalculationTableMobile, { props: { bidCalculation } });
-    const vehiclePrice = screen.getByTestId("vehiclePrice");
-    const vehicleType = screen.getByTestId("vehicleType");
-    const basicFee = screen.getByTestId("basicFee");
-    const specialFee = screen.getByTestId("specialFee");
-    const associationFee = screen.getByTestId("associationFee");
-    const storageFee = screen.getByTestId("storageFee");
-    const total = screen.getByTestId("total");
+    const vehiclePrice = screen.getByTestId("vehiclePriceMobile");
+    const vehicleType = screen.getByTestId("vehicleTypeMobile");
+    const basicFee = screen.getByTestId("basicFeeMobile");
+    const specialFee = screen.getByTestId("specialFeeMobile");
+    const associationFee = screen.getByTestId("associationFeeMobile");
+    const storageFee = screen.getByTestId("storageFeeMobile");
+    const total = screen.getByTestId("totalMobile");
 
     within(vehiclePrice).getByText("$1,000.00");
     within(vehicleType).getByText(VehicleType.Common);

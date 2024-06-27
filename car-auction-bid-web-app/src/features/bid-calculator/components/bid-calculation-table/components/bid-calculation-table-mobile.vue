@@ -13,43 +13,46 @@ const props = defineProps({
     <tbody>
       <tr>
         <td class="bidCalculationTableRowItem">Vehicle Price</td>
-        <td data-testid="vehiclePrice" class="bidCalculationTableRowItem">
+        <td data-testid="vehiclePriceMobile" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.vehiclePrice) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Vehicle Type</td>
-        <td data-testid="vehicleType" class="bidCalculationTableRowItem">
+        <td data-testid="vehicleTypeMobile" class="bidCalculationTableRowItem">
           {{ props.bidCalculation.vehicleType }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Basic Fee</td>
-        <td data-testid="basicFee" class="bidCalculationTableRowItem">
+        <td data-testid="basicFeeMobile" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.basicFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Special Fee</td>
-        <td data-testid="specialFee" class="bidCalculationTableRowItem">
+        <td data-testid="specialFeeMobile" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.specialFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Association Fee</td>
-        <td data-testid="associationFee" class="bidCalculationTableRowItem">
+        <td
+          data-testid="associationFeeMobile"
+          class="bidCalculationTableRowItem"
+        >
           {{ CurrencyFormatter.format(props.bidCalculation.associationFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Storage Fee</td>
-        <td data-testid="storageFee" class="bidCalculationTableRowItem">
+        <td data-testid="storageFeeMobile" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.storageFee) }}
         </td>
       </tr>
       <tr>
         <td class="bidCalculationTableRowItem">Total</td>
-        <td data-testid="total" class="bidCalculationTableRowItem">
+        <td data-testid="totalMobile" class="bidCalculationTableRowItem">
           {{ CurrencyFormatter.format(props.bidCalculation.total) }}
         </td>
       </tr>

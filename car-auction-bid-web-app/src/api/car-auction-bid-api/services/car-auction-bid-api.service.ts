@@ -6,14 +6,15 @@ import { CarAuctionBidApiDtoMapper } from "../dto/car-auction-bid-api-dto-mapper
 
 export class CarAuctionBidApiService {
   private static baseUrl = import.meta.env.VITE_CAR_AUCTION_BID_API_BASE_URL;
-
+  public static paths = {
+    calculateBid: `${this.baseUrl}/bid/calculate`,
+  };
   public static async calculateBid(
     vehiclePrice: string,
     vehicleType: VehicleType,
   ): Promise<BidCalculation | null> {
     try {
-      const url = `${this.baseUrl}/bid/calculate`;
-      const result = await HttpService.post(url, {
+      const result = await HttpService.post(this.paths.calculateBid, {
         vehiclePrice: Number(vehiclePrice),
         vehicleType,
       });
