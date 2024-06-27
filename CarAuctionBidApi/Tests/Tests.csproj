@@ -16,6 +16,7 @@
     <PackageReference Include="coverlet.collector" Version="6.0.2"><IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 <PrivateAssets>all</PrivateAssets>
 </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,9 @@
     <None Remove="Dto\" />
     <None Remove="Dto\BidCalculationDtoTest\" />
     <None Remove="Dto\VehicleTypeDtoTest\" />
+    <None Remove="Integration\" />
+    <None Remove="Integration\Resources\" />
+    <None Remove="Integration\Resources\Mocks\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -31,6 +35,9 @@
     <Folder Include="Dto\" />
     <Folder Include="Dto\BidCalculationDtoTest\" />
     <Folder Include="Dto\VehicleTypeDtoTest\" />
+    <Folder Include="Integration\" />
+    <Folder Include="Integration\Resources\" />
+    <Folder Include="Integration\Resources\Mocks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarAuctionBidApi\CarAuctionBidApi.csproj" />
