@@ -1,12 +1,15 @@
 import { expect, test, beforeEach, afterEach, vi, describe } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/vue";
+import { render, screen } from "@testing-library/vue";
+import userEvent, { UserEvent } from "@testing-library/user-event";
 import CarDetailsForm from "../../../../features/bid-calculator/components/car-details-form.vue";
 import { VehicleType } from "../../../../models/vehicle/vehicle-type.enum";
 import { TestId } from "../../../../test-id";
 
 describe("CarDetailsForm", () => {
+  let user: UserEvent;
   beforeEach(() => {
     vi.useFakeTimers();
+    user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
   });
 
   afterEach(() => {
@@ -18,7 +21,7 @@ describe("CarDetailsForm", () => {
     const vehiclePriceInput = screen.getByTestId(
       TestId.CarDetailsForm.VehiclePriceInput,
     );
-    await fireEvent.update(vehiclePriceInput, "abcd");
+    await user.type(vehiclePriceInput, "abcd");
     const vehiclePriceErrorMessage = screen.getByTestId(
       TestId.CarDetailsForm.VehiclePriceErrorMessage,
     );
@@ -34,7 +37,7 @@ describe("CarDetailsForm", () => {
     const vehiclePriceInput = screen.getByTestId(
       TestId.CarDetailsForm.VehiclePriceInput,
     );
-    await fireEvent.update(vehiclePriceInput, expectedVehiclePrice);
+    await user.type(vehiclePriceInput, expectedVehiclePrice);
 
     vi.runAllTimers();
     const emitResult = component.emitted("calculateBid");
@@ -54,12 +57,12 @@ describe("CarDetailsForm", () => {
     const vehiclePriceInput = screen.getByTestId(
       TestId.CarDetailsForm.VehiclePriceInput,
     );
-    await fireEvent.update(vehiclePriceInput, expectedVehiclePrice);
+    await user.type(vehiclePriceInput, expectedVehiclePrice);
 
     const vehicleTypeSelect = screen.getByTestId(
       TestId.CarDetailsForm.VehicleTypeSelect,
     );
-    await fireEvent.update(vehicleTypeSelect, expectedVehicleType);
+    await user.selectOptions(vehicleTypeSelect, expectedVehicleType);
 
     vi.runAllTimers();
     const emitResult = component.emitted("calculateBid");
